@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'wall_app/message.css' %}">
+    <title>Success!</title>
+</head>
+<body>
+     <div id="container">
+            <div id="header">
+                <div id=hearboxes> <h3 id="name">Welcome {{request.session.u_fname}} to le homies!</h3></div>
+                <div id=hearboxes> <p style = "direction: rtl;"><a href="/logout">Log Out</a></p></h3></div>
+            </div>  
+            <div id="body">
+                <h2>Post a message:</h2>
+                <form action="/post" method="post">
+                    {% csrf_token %}
+                    <textarea id="messagebox" name="message" row="3" cols="80"></textarea>
+                    <input type="hidden" name="id" value="request.session['u_id']">
+                    <br>
+                    <input id="msgbtn" type="submit" value="Post a message!">
+                </form>
+                {% for post in posts reversed %}
+                    <h3 id="postdetails">{{post.messager.first_name}} {{post.messager.last_name}} - {{post.created_at|date:'F jS Y'}} {% if post.messager.id == request.session.u_id %} <a href="/delmsg/{{post.id}}"><button>Delete</button></a> {% endif %}</h3>
+                    <p id="post">{{post.message}}</p>
+                    <p id="micro">...posted {{post.created_at|timesince}} ago.</p>
+                        {% for comment in post.post_comments.all %}
+                        <h4 id="commentdetails">{{comment.commentor.first_name}} {{comment.commentor.last_name}} - {{comment.created_at|date:'F jS Y'}}</h4>
+                        <p id="comment">{{comment.comment}} {% if comment.commentor.id == request.session.u_id %} <a href="/delcom/{{comment.id}}"><button>Delete</button></a> {% endif %}</p>
+                        <p id="micro">...posted {{comment.created_at|timesince}} ago.</p>
+                        {% endfor %}
+                <h3 id="cmtheader">Post a comment:</h3>
+                <form action="/comment" method="post">
+                    {% csrf_token %}
+                    <input id ="commentbox" type="textarea" name="comment" row="3">
+                    <input type="hidden" name="id" value="request.session['u_id']">
+                    <input type="hidden" name="post_id" value="{{post.id}}">
+                    <input id="cmtbtn" type="submit" value="Post a comment!">
+                </form>
+            {% endfor %}
+        </div>
+</body>
+</html>

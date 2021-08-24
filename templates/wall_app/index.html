@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'wall_app/login.css' %}">
+    <title>Login and Registration</title>
+</head>
+<body>
+    <div id="container">
+        <div id="registration">
+            <h1>Registration</h1>
+            <form action='/register' method="POST">
+                {% csrf_token %}
+                <br>
+                <p class="alright">First Name:<input class="fields" type="text" name="first_name"></p>
+                <p class="alright">Last Name:<input class="fields" type="text" name="last_name"></p>
+                <p>Birth Year:<input class="fields" type="text" name="birth_year"></p>
+                <p class="alright">Email:<input class="fields" type="text" name="email"></p>
+                <p class="alright">Password:<input class="fields" type="password" name="password"></p>
+                <p class="alright">Confirm Password:<input class="fields" type="password" name="confirm_pw"></p>
+                <button class="submit">Register</button>
+                <div id="errors">
+                    {% if messages %}
+                        {% for messages in messages %}
+                        <p><bold>{{messages}}</bold></p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+        <div id="login">
+            <h1 id="space">Login</h1>
+            <form action="/wall" method="post">
+                <br>
+                {% csrf_token %}
+                <p class="alright">Email:<input class="fields" type="text" name="first_name"></p>
+                <p class="alright">Password:<input class="fields" type="text" name="first_name"></p>
+                <button class="submit">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

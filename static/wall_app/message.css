@@ -1,0 +1,40 @@
+*
+{
+    margin: 0px auto;
+    padding: 0px auto;
+    font-family: lato, sans-serif;
+    /* background-color: rgb(225,207,191); */
+}
+
+#header{
+    padding-top: 20px;
+    height:100px;
+    width: 900px;
+    display: flex;
+}  
+
+#container{ 
+    height: 1000px;
+    width: 900px;
+    font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
+    background-color:rgb(241,240,235);
+  
+
+}
+#body{
+    text-align: center;
+    padding-top: 50px;
+    height: 800px;
+    width: 800px;
+    background-color:rgb(138,153,170);
+
+}
+#logout{
+    text-align: right;
+    float: right;
+}
+
+#cmtdiv {
+    width: 100px;
+    height: 105px;
+} 

@@ -1,0 +1,46 @@
+*
+{
+    margin: 0px auto;
+    padding: 0px auto;
+}
+
+#container{
+    height: 800px;
+    width: 900px;
+    display: flex;
+    background-color:rgb(241,240,235);
+
+
+}
+h1{
+    color: rgb(216,195,164);
+    font-family: lato, sans-serif;
+}
+#registration{
+    height: 400px;
+    width: 410px;
+    margin-top: 50px;
+    font-family: lato, sans-serif;
+    padding-top: 15px;
+    padding-left: 20px;
+    background-color: rgb(138,153,170);;
+    border-radius: 25px;
+
+}
+#login{
+    height: 400px;
+    width: 380px;
+    margin-top: 50px;
+    font-family: lato, sans-serif;
+    padding-top: 15px;
+    padding-left: 10px;
+    background-color:rgb(138,153,170);
+    padding-right: 25px;
+    border-radius: 25px;
+    
+}
+.submit {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50; /* Green */
+  }
